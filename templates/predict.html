@@ -1,0 +1,129 @@
+<!--In this page we will display the form and any errors of user input-->
+{% extends "layout.html" %}
+
+{% block content %}
+<form action="" method="post"> <!--action="" means when user clicks the button we need to keep it in same page-->
+    <!--method="post" means whatever data we got we need to send it. "-->
+    
+    {{ form.hidden_tag() }}  <!--By this Code CSRF token is passed to server.-->
+    <div>
+     {{ form.airline.label }}  <!--Displaying label/text visible for that field -->
+     {{ form.airline}} <!--Displaying the input.-->
+     {% if form.airline.errors %}   <!--If u have any errors in username iterate through errors and print it.-->
+            {% for error in form.airline.errors %}
+                <div>{{ error }}</div>
+            {% endfor %}
+    {% endif %}
+    </div>
+    <br>
+
+    <div>
+        {{ form.date_of_journey.label }} <!--Displaying the label. -->
+        {{ form.date_of_journey}}   <!--Displaying the input.-->
+        {% if form.date_of_journey.errors %}
+            {% for error in form.date_of_journey.errors %}
+                    <div>{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+       </div>
+       <br>
+    
+    <div>
+    {{ form.source.label }}
+    {{ form.source}}
+    {% if form.source.errors %}
+            {% for error in form.source.errors %}
+                <div>{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <br>
+
+    <div>
+        {{ form.destination.label }}
+        {{ form.destination}}
+        {% if form.destination.errors %}
+            {% for error in form.destination.errors %}
+                <div>{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+       </div>
+       <br>
+
+       <div>
+        {{ form.dep_time.label }}
+        {{ form.dep_time}}
+        {% if form.dep_time.errors %}
+            {% for error in form.dep_time.errors %}
+                <div>{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+       </div>
+       <br>
+    
+       <div>
+        {{ form.arrival_time.label }}
+        {{ form.arrival_time }}
+        {% if form.arrival_time.errors %}
+            {% for error in form.arrival_time.errors %}
+                <div>{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+       </div>
+       <br>
+
+
+
+       <div>
+        {{ form.duration.label }}
+        {{ form.duration }}
+        {% if form.duration.errors %}
+            {% for error in form.duration.errors %}
+                <div>{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+       </div>
+       <br>
+
+
+       <div>
+        {{ form.total_stops.label }}
+        {{ form.total_stops }}
+        {% if form.total_stops.errors %}
+            {% for error in form.total_stops.errors %}
+                <div>{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+       </div>
+       <br>
+
+
+       <div>
+        {{ form.additional_info.label }}
+        {{ form.additional_info }}
+        {% if form.additional_info.errors %}
+            {% for error in form.additional_info.errors %}
+                <div>{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+       </div>
+       <br>
+
+
+
+       <div>{{ form.submit() }} </div>
+       <br>
+       
+       <div>
+       <b>{{ output }}</b>  <!-- Placeholder to show price in bold using Jinja -->
+       </div>
+    
+       <br>
+       <div>
+           <p>Redirect to Homepage? <a href="{{ url_for('home') }}">Home</a></p>
+       </div>
+
+</form>
+{% endblock content %}
+
+
